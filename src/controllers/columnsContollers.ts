@@ -49,10 +49,12 @@ export const updateColumn = async (req: Request, res: Response) => {
   }
   try {
     const foundedColumn = await columnService.findColumnById(req.params["columnId"]);
-    res.json(foundedColumn);
+    console.log(foundedColumn);
+    // res.json(foundedColumn);
   } catch (err) {
     return res.status(404).send(createError(404, "Column was not founded!"));
   }
+
   const { title, order } = req.body;
 
   try {
@@ -73,7 +75,8 @@ export const deleteColumn = async (req: Request, res: Response) => {
   const initUser = req.header("initUser") || "undefined";
   try {
     const foundedColumn = await columnService.findColumnById(req.params["columnId"]);
-    res.json(foundedColumn);
+    console.log(foundedColumn);
+    // res.json(foundedColumn);
   } catch (err) {
     return res.status(404).send(createError(404, "Column was not founded!"));
   }
