@@ -47,11 +47,9 @@ export const updateColumn = async (req: Request, res: Response) => {
   if (bodyError) {
     return res.status(400).send(createError(400, "bad request: " + bodyError));
   }
-  try {
-    const foundedColumn = await columnService.findColumnById(req.params["columnId"]);
-    console.log(foundedColumn);
-    // res.json(foundedColumn);
-  } catch (err) {
+
+  const foundedColumn = await columnService.findColumnById(req.params["columnId"]);
+  if (!foundedColumn) {
     return res.status(404).send(createError(404, "Column was not founded!"));
   }
 
@@ -73,11 +71,9 @@ export const updateColumn = async (req: Request, res: Response) => {
 export const deleteColumn = async (req: Request, res: Response) => {
   const guid = req.header("Guid") || "undefined";
   const initUser = req.header("initUser") || "undefined";
-  try {
-    const foundedColumn = await columnService.findColumnById(req.params["columnId"]);
-    console.log(foundedColumn);
-    // res.json(foundedColumn);
-  } catch (err) {
+
+  const foundedColumn = await columnService.findColumnById(req.params["columnId"]);
+  if (!foundedColumn) {
     return res.status(404).send(createError(404, "Column was not founded!"));
   }
   try {
