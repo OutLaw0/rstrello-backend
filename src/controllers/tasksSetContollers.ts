@@ -26,7 +26,7 @@ export const updateSetOfTask = async (req: Request, res: Response) => {
     if (!foundedTasks) {
       return res.status(404).send(createError(404, "Task was not founded!"));
     }
-    const foundedColumns = await columnService.findColumnById(_id);
+    const foundedColumns = await columnService.findColumnById(columnId);
     if (!foundedColumns) {
       return res.status(404).send(createError(404, "Column was not founded!"));
     }
